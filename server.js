@@ -10,9 +10,9 @@ const port = process.env.PORT || 5000;
 //then the port constant will be assigned the default value of 5000. 
 //This ensures that the application will listen to port 5000 if no PORT environment variable is specified.
 
-app.get('/api/contact/js', (req, res) => {
-    res.status(200).json({message:"Hello Guys"});
-    });
+// app.get('/api/contact/js', (req, res) => {
+//     res.status(200).json({message:"Hello Guys"});
+//     });
 
 app.use(express.json()); //Built-in Middleware for POST Request Body
 app.use("/api/contacts", require("./routes/contactRoutes"));
