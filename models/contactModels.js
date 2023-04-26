@@ -25,3 +25,6 @@ const contactSchema = mongo.schema ({
 );
 
 module.exports = mongoose.model("Contact",contactSchema);
+//The mongoose.model() function takes two arguments: a string representing 
+//the name of the model ("Contact" in this case), and a schema object that
+//defines the structure of the documents that will be stored in the corresponding MongoDB collection.

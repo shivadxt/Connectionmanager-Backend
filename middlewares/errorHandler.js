@@ -1,5 +1,10 @@
 const {constants} = require ("../constants")
 const errorHandler = (err, req, res, next) => {
+// The errorHandler function takes four parameters:
+// err: the error object that has been thrown by a previous middleware function or route handler.
+// req: the request object representing the HTTP request being handled.
+// res: the response object representing the HTTP response being sent.
+// next: the function that invokes the next middleware function in the stack.
     const statusCode = res.statusCode ? res.statusCode : 500;
 
 switch (statusCode) {
