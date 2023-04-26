@@ -1,5 +1,6 @@
 const express = require("express");
 const errorHandler = require("./middlewares/errorHandler");
+const dbConnect = require("./config/dbConnection");
 const dotenv = require("dotenv").config();
 //const dotenv = require("dotenv").config(); is importing the dotenv module and calling its config() function.
 
@@ -14,6 +15,8 @@ const port = process.env.PORT || 5000;
 // app.get('/api/contact/js', (req, res) => {
 //     res.status(200).json({message:"Hello Guys"});
 //     });
+
+dbConnect();
 
 app.use(express.json()); //Built-in Middleware for POST Request Body
 app.use("/api/contacts", require("./routes/contactRoutes"));
