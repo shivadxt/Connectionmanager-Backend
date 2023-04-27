@@ -1,4 +1,4 @@
-const {constants} = require ("../constants")
+const {constants} = require ("../constants.js")
 const errorHandler = (err, req, res, next) => {
 // The errorHandler function takes four parameters:
 // err: the error object that has been thrown by a previous middleware function or route handler.
@@ -18,12 +18,14 @@ switch (statusCode) {
         stackTrace: err.stack,
       });
       break;
+      
     case constants.NOT_FOUND:
       res.json({
         title: "Not Found",
         message: err.message,
         stackTrace: err.stack,
       });
+      
     case constants.UNAUTHORIZED:
       res.json({
         title: "Unauthorized",
@@ -50,54 +52,54 @@ switch (statusCode) {
 
 module.exports = errorHandler;
 
-// const { constants } = require("../constants");
+
+// 
 
 // const errorHandler = (err, req, res, next) => {
-//   const statusCode = res.statusCode ? res.statusCode : 500;
-
-//   switch (statusCode) {
-//     case constants.VALIDATION_ERROR:
-//       res.json({
-//         title: "Validation Failed",
-//         message: err.message,
-//         stackTrace: err.stack,
-//       });
-//       break;
-//     case constants.NOT_FOUND:
-//       res.json({
-//         title: "Not Found",
-//         message: err.message,
-//         stackTrace: err.stack,
-//       });
-//       break;
-//     case constants.UNAUTHORIZED:
-//       res.json({
-//         title: "Unauthorized",
-//         message: err.message,
-//         stackTrace: err.stack,
-//       });
-//       break;
-//     case constants.FORBIDDEN:
-//       res.json({
-//         title: "Forbidden",
-//         message: err.message,
-//         stackTrace: err.stack,
-//       });
-//       break;
-//     case constants.SERVER_ERROR:
-//       res.json({
-//         title: "Server Error",
-//         message: err.message,
-//         stackTrace: err.stack,
-//       });
-//       break;
-//     default:
-//       res.status(500).json({
-//         title: "Internal Server Error",
-//         message: "Something went wrong on the server",
-//       });
-//       break;
-//   }
-// };
-
-// module.exports = errorHandler;
+//     const statusCode = err.status || constants.SERVER_ERROR;
+//     switch (statusCode) {
+//       case constants.VALIDATION_ERROR:
+//         res.status(statusCode).json({
+//           title: "Validation Failed",
+//           message: err.message,
+//           stackTrace: err.stack,
+//         });
+//         break;
+//       case constants.NOT_FOUND:
+//         res.status(statusCode).json({
+//           title: "Not Found",
+//           message: err.message,
+//           stackTrace: err.stack,
+//         });
+//         break;
+//       case constants.UNAUTHORIZED:
+//         res.status(statusCode).json({
+//           title: "Unauthorized",
+//           message: err.message,
+//           stackTrace: err.stack,
+//         });
+//         break;
+//       case constants.FORBIDDEN:
+//         res.status(statusCode).json({
+//           title: "Forbidden",
+//           message: err.message,
+//           stackTrace: err.stack,
+//         });
+//         break;
+//       case constants.SERVER_ERROR:
+//         res.status(statusCode).json({
+//           title: "Server Error",
+//           message: err.message,
+//           stackTrace: err.stack,
+//         });
+//         break;
+//       default:
+//         console.log("No Error, All good !");
+//         break;
+//     }
+//     // Call next to continue to any remaining middleware or route handlers
+//     next();
+//   };
+  
+//   module.exports = errorHandler;
+  

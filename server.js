@@ -20,6 +20,7 @@ dbConnect();
 
 app.use(express.json()); //Built-in Middleware for POST Request Body
 app.use("/api/contacts", require("./routes/contactRoutes"));
+
 app.use(errorHandler);
 
 app.listen(port, () => {
