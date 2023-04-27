@@ -7,8 +7,8 @@ const Contact = require ("../models/contactModels");
 
 const getContact = asyncHandler (async (req,res) => {
     const contacts = await Contact.find();
-    res.status(200).json(contacts);
-});
+    res.status(200).json(contact);
+}); 
 
 //@des : Get all contacts
 //@route : GET/api/contacts
@@ -18,7 +18,7 @@ const getidContact = asyncHandler (async (req,res) => {
     if(!contact){
         res.status(404);
         throw new Error("Contact not found");
-    };
+    }
     res.status(200).json(contact);
 });
 
