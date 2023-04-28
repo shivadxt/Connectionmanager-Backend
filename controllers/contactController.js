@@ -40,18 +40,47 @@ const createContact = asyncHandler (async (req,res) => {
     res.status(201).json({message:"created a new contact"});
 });
 
-const getidContact = asyncHandler(async (req, res, next) => {
-    // console.log("Getting contact with ID:", req.params.id);
-    const contact = await Contact.findById(req.params.id);
-    console.log("Getting Kontact with ID:", req.params.id);
-    if (!contact) {
-        console.log("Getting contact with ID:", req.params.id);
-      const error = new Error("Contact not found");
-      error.status = 404; // Set the status code of the error
-      return next(error);
-    }
-    res.status(200).json(contact);
-  });
+const getidContact = asyncHandler(async (req, res) => {
+    console.log(req.params.id);
+    Contact.findById(req.params.id, function(err, contact){
+        if (err){
+            console.log("inside");
+            res.status (404);
+            throw new Error("Contact not found");
+        }
+        else{
+            console.log("im here",contact);
+            res.status (200).json (contact);
+        }
+      });
+    // const contact = await Contact.findById(req.params.id);
+    console.log("im here");
+});
+
+// const getidContact = asyncHandler(async (req, res) => {
+//     console.log(req.params.id);
+//     Contact.findById(req.params.id, function(err, contact){
+//         if (err){
+//             console.log("inside");
+//             res.status (404);
+//             throw new Error("Contact not found");
+//         }
+//         else{
+
+//             console.log("im here",contact);
+//             res.status (200).json (contact);
+//         }
+//       });
+//     // const contact = await Contact.findById(req.params.id);
+//     console.log("im here",contact1);
+//     if (!contact._id) {
+//     console.log("inside");
+//     res.status (404);
+//     throw new Error("Contact not found");
+//     }
+//     console.log("bdccnb",contact);
+//     // res.status (200).json (contact);
+    // });
   
 
 //@des : Create a  contact
