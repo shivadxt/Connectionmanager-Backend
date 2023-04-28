@@ -9,7 +9,6 @@ const errorHandler = (err, req, res, next) => {
 //     res.json({message: 'Invalid contact ID',
 //     details: 'The provided contact ID is not a valid ObjectId'
 // }); // Coverting ERROR to JSON format
-console.log(statusCode); 
 switch (statusCode) {
       
     case constants.VALIDATION_ERROR:
@@ -18,9 +17,7 @@ switch (statusCode) {
         message: err.message,
         stackTrace: err.stack,
       });
-    break;
-
-    
+    break;    
     case constants.NOT_FOUND:
         console.log("status code");
       res.json({
